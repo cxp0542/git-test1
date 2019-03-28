@@ -1,4 +1,4 @@
-package com.jzl.cloud_common_service.api.face;
+﻿package com.jzl.cloud_common_service.api.face;
 
 import com.jzl.cloud_common_service.manager.face.FaceDetectManager;
 import com.jzl.cloud_common_service.vo.face.requestvo.FaceDetectVo;
@@ -15,25 +15,8 @@ import org.springframework.stereotype.Component;
 /**
  * Created by xiao on 2018-08-21.
  */
-@Component
-
-public class FaceDetectService extends ServiceHandler
-{
-    @Autowired
-    FaceDetectManager faceDetectManager;
-
-    @ParamField(name = "face_alive_info", checkType = CheckType.NOT_NULL_AND_BLANK, message = "人脸照片数据不能为空！")
-    private ThreadLocal<FaceDetectVo> faceDetectVo = new ThreadLocal<>();
-
-    @Override
-    public String supportServiceName()
-    {
-        return "face" + "." + "detect";
-    }
-
-    @Override
-    public Response handle(Request request)
-    {
+@ComponentName()
+    
             return new ResponseBody()
                     .setStatus(ResponseStatus.STATUS_SUCCESS)
                     .putData("instance", faceDetectManager.faceAliveDetect(faceDetectVo.get().getFaces()))
